@@ -1,3 +1,8 @@
+//------------------------------------------------
+// Convert an Action! Code Blocks to a binary 
+// file.
+//------------------------------------------------
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
