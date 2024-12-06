@@ -46,7 +46,6 @@ CHex2Bin::CHex2Bin()
 
 CHex2Bin::~CHex2Bin()
 {
-	if (m_pOut) fclose(m_pOut);
 	if (m_pInFileBuffer) delete[] m_pInFileBuffer;
 }
 
