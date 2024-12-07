@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	int rV = 1;
 
 	fprintf(stderr, "Ascii Hex to Binary Converter\n");
-	fprintf(stderr, "Ver 0.1.1  Dec 6, 2024\n");
+	fprintf(stderr, "Ver 0.1.2  Dec 7, 2024\n");
 
 	if (argc == 3)
 	{
@@ -143,7 +143,7 @@ void CHex2Bin::SaveData()
 		m_BytesSaved++;
 		break;
 	default:
-		fprintf(stderr, "Too many characters :%d\n", m_DigitCount);
+		fprintf(stderr, "ErrorToo many digits, Max of 4 Got :%d\n", m_DigitCount);
 		break;
 	}
 }
