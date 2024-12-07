@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	int rV = 1;
 
 	fprintf(stderr, "Ascii Hex to Binary Converter\n");
-	fprintf(stderr, "Ver 0.1.0  Dec 6, 2024\n");
+	fprintf(stderr, "Ver 0.1.1  Dec 6, 2024\n");
 
 	if (argc == 3)
 	{
@@ -98,27 +98,43 @@ void CHex2Bin::SaveData()
 {
 	unsigned Mask = 0;
 	unsigned v;
+	int i;
 
 	switch (m_DigitCount)
 	{
 	case 8:
 	case 7:
-		Mask = 0xFF000000;
-		v = (m_LexValue & Mask) >> 24;
-		fputc(v, m_pOut);
-		m_BytesSaved++;
+		Mask = 0xFF;
+		for (i = 0; i < 4; ++i)
+		{
+			v = (m_LexValue & Mask) >>( i * 8);
+			fputc(v, m_pOut);
+			m_BytesSaved++;
+			Mask <<= 8;
+		}
+		break;
 	case 6:
 	case 5:
-		Mask = 0xFF0000;
-		v = (m_LexValue & Mask) >> 16;
-		fputc(v, m_pOut);
-		m_BytesSaved++;
+		Mask = 0xFF;
+		for (i = 0; i < 3; ++i)
+		{
+			v = (m_LexValue & Mask) >> (i * 8);
+			fputc(v, m_pOut);
+			m_BytesSaved++;
+			Mask <<= 8;
+		}
+		break;
 	case 4:
 	case 3:
-		Mask = 0xFF00;
-		v = (m_LexValue & Mask) >> 8;
-		fputc(v, m_pOut);
-		m_BytesSaved++;
+		Mask = 0xFF;
+		for (i = 0; i < 2; ++i)
+		{
+			v = (m_LexValue & Mask) >> (i * 8);
+			fputc(v, m_pOut);
+			m_BytesSaved++;
+			Mask <<= 8;
+		}
+		break;
 	case 2:
 	case 1:
 		Mask = 0xFF;
